@@ -48,6 +48,6 @@ Here are some example commands to run the script:
 
 This script was created by [insert your name here] using the following resources:
 
-- [4anime.to](https://4anime.to/)
+- [animepahe](https://animepahe.com/)
 - [Python Requests library](https://requests.readthedocs.io/)
 - [Beautiful Soup 4 library](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
