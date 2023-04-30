@@ -1,5 +1,5 @@
 #! /usr/bin/python3
-import sys,time,requests,argparse
+import sys,time,requests,argparse,os,sys
 from json import loads
 from selenium import webdriver
 from bs4 import BeautifulSoup
@@ -8,8 +8,11 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.core.utils import ChromeType
 
-import sys
 
 start = time.perf_counter()
 def spinning_cursor():
@@ -72,7 +75,7 @@ parser.add_argument('-mdv', '--multi_download_verbose', type=str,
 parser.add_argument('-a', '--about',
                     help='Outputs an overview information on the anime',action='store_true')
 
-parser.add_argument('-ad', '--autodriver', action='store_true',
+parser.add_argument('-ad', '--download_driver', action='store_true',
                     help='Automatically download chromedriver if not installed(works on all platforms)')
 
 
@@ -90,19 +93,13 @@ sdarg = args.single_download
 mdarg = args.multi_download_optimized
 mdvarg = args.multi_download_verbose
 abtarg = args.about
-autoarg = args.autodriver
-
-
-
-
-
-
+autoarg = args.download_driver
 
 
 
 
 # ============================ The requests argument handler function===============================
-import chromedriver_autoinstaller as cdauto
+
 
 def box_text(func):
     def wrapper():
@@ -127,31 +124,36 @@ def browsarg():
 
     if barg == "chrome":
 
+        serv = Service(executable_path=ChromeDriverManager().install())
         option = webdriver.ChromeOptions()
 
         option.headless = False
 
         option.add_experimental_option("detach", False)
 
-        driver = webdriver.Chrome(options=option)
+        driver = webdriver.Chrome(service = serv,options=option)
 
-    elif barg == "ff":
+    elif barg == "ffgui":
+
         options = Options()
         options.headless = False
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),options=options)
         
     elif barg == "firefox":
+
         options = Options()
         options.headless = True
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(),options=options)
 
 
-    elif barg == "headless":
+    elif barg == "brave":
+        serv = Service(ChromeDriverManager().install())
+        
         options = Options()
         
-        options.headless = True
+        options.headless = False
         
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
     else:
         pass
 # =======================================================================================================
@@ -380,8 +382,6 @@ def singledownarg(arg):
         element.click()
         n()
     
-    #closing the bg driver
-    driver.quit()
     
     print(f'Downloading Episode {arg} of {animepicked} NOW!!!!!!!')
     
@@ -556,10 +556,6 @@ def multi_download_optimized(arg):
         
 if bool(mdarg) == True:
     multi_download_optimized(mdarg)
-else:
-    pass
-if autoarg:
-    cdauto.install()
 else:
     pass
 

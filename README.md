@@ -6,12 +6,10 @@ This is a Python script that can be used to search and download anime episodes f
 ## Prerequisites
 
 - Python 3.x
-- The `requests`, `beautifulsoup4`, `selenium`, and `chromedriver_autoinstaller` Python libraries. You can install them by running:
+- The `requests`, `beautifulsoup4`, `selenium`, and `webdriver-manager` Python libraries. You can install them by running:
 
-  ```shell
-  pip install requests beautifulsoup4 selenium chromedriver_autoinstaller
-  ```
-- For the `geckodriver` or firefox driver it should be downloaded from their site
+
+- For the `geckodriver` or firefox driver  `-ad` shud automatically download it
 - For `chromedriver` , use the `-ad` option to download it automatically
 
 ## Usage
@@ -25,7 +23,7 @@ python fetchanime.py [-h] [-b BROWSER] [-s SEARCH] [-sh SEARCH_HIDDEN] [-i INDEX
 Here are the available options:
 
 - `-h`, `--help`: show the help message and exit
-- `-b`, `--browser`: choose the browser to use (`chrome` or `firefox`). If omitted, the script will use `chrome` by default. Use `ff` for a GUI Firefox window.
+- `-b`, `--browser`: choose the browser to use (`chrome`,`firefox` or `brave`). If omitted, the script will use `chrome` by default. Use `ffgui` for a GUI Firefox window.
 - `-s`, `--search`: search for an anime using a keyword. The script will display a list of matching results.
 - `-sh`, `--search_hidden`: search for an anime using its name and index. This option is less verbose than the regular search.
 - `-i`, `--index`: choose an anime from the search results by its index.
@@ -33,7 +31,7 @@ Here are the available options:
 - `-md`, `--multi_download_optimized`: download multiple episodes of an anime at once using a faster, optimized method. Specify a comma-separated string of episode numbers to download.
 - `-mdv`, `--multi_download_verbose`: download multiple episodes of an anime at once and show a verbose output. Specify a comma-separated string of episode numbers to download.
 - `-a`, `--about`: display an overview of the chosen anime.
-- `-ad`, `--autodriver`: automatically download and install the correct version of the `chromedriver` executable if it's not found on your system.
+- `-ad`, `--autodriver`: automatically download and install the correct version of the `chromedriver` or  `geckodriver` executable if it's not found on your system.
 
 ## Example Usage
 
