@@ -75,8 +75,6 @@ parser.add_argument('-mdv', '--multi_download_verbose', type=str,
 parser.add_argument('-a', '--about',
                     help='Outputs an overview information on the anime',action='store_true')
 
-parser.add_argument('-ad', '--download_driver', action='store_true',
-                    help='Automatically download chromedriver if not installed(works on all platforms)')
 
 
 

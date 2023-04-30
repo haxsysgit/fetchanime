@@ -17,7 +17,7 @@ This is a Python script that can be used to search and download anime episodes f
 To use the script, run it in your terminal using the following command:
 
 ```shell
-python fetchanime.py [-h] [-b BROWSER] [-s SEARCH] [-sh SEARCH_HIDDEN] [-i INDEX] [-sd SINGLE_DOWNLOAD] [-md MULTI_DOWNLOAD_OPTIMIZED] [-mdv MULTI_DOWNLOAD_VERBOSE] [-a ABOUT] [-ad AUTODRIVER]
+python fetchanime.py [-h] [-b BROWSER] [-s SEARCH] [-sh SEARCH_HIDDEN] [-i INDEX] [-sd SINGLE_DOWNLOAD] [-md MULTI_DOWNLOAD_OPTIMIZED] [-mdv MULTI_DOWNLOAD_VERBOSE] [-a ABOUT]
 ```
 
 Here are the available options:
@@ -31,7 +31,7 @@ Here are the available options:
 - `-md`, `--multi_download_optimized`: download multiple episodes of an anime at once using a faster, optimized method. Specify a comma-separated string of episode numbers to download.
 - `-mdv`, `--multi_download_verbose`: download multiple episodes of an anime at once and show a verbose output. Specify a comma-separated string of episode numbers to download.
 - `-a`, `--about`: display an overview of the chosen anime.
-- `-ad`, `--autodriver`: automatically download and install the correct version of the `chromedriver` or  `geckodriver` executable if it's not found on your system.
+
 
 ## Example Usage
 
