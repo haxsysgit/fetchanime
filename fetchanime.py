@@ -558,14 +558,10 @@ if bool(mdarg) == True:
     multi_download_optimized(mdarg)
 else:
     pass
-if autoarg != None:
-
-    if autoarg.lower() == "yes":
-    
-        cdauto.install()
-    else:
-    
-        pass
+if autoarg:
+    cdauto.install()
+else:
+    pass
 
 # ----------------------------------------------End of All the Argument Handling----------------------------------------------------------
 
