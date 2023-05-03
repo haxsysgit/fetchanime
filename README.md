@@ -47,7 +47,7 @@ Here are some example commands to run the script:
 
 ## Acknowledgments
 
-This script was created by [insert your name here] using the following resources:
+This script was created by Arinze using the following resources:
 
 - [animepahe](https://animepahe.com/)
 - [Python Requests library](https://requests.readthedocs.io/)
