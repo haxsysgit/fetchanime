@@ -9,8 +9,9 @@ This is a Python script that can be used to search and download anime episodes f
 - The `requests`, `beautifulsoup4`, `selenium`, and `webdriver-manager` Python libraries. You can install them by running:
 
 
-- For the `geckodriver` or firefox driver  `-ad` shud automatically download it
-- For `chromedriver` , use the `-ad` option to download it automatically
+- For the `geckodriver` or firefox driver shud automatically be downloaded by the script
+- For `chromedriver` , the script will download it automatically if not available
+- The same also goes for brave
 
 ## Usage
 
