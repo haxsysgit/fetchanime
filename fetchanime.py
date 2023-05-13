@@ -269,9 +269,7 @@ def indexarg(arg):
 
     print(f'Anime Name : {animepicked}')
     n()
-    print(f'No of Episodes : {epno}')
-    n()
-    
+
     #session id of the whole session with the anime
     session_id = search_response_dict['data'][arg]['session']
 
@@ -287,7 +285,11 @@ def indexarg(arg):
     
     jsonpage_dict = loads(requests.get(anime_url_format).text)
     
-    episto = jsonpage_dict['to']
+    episto = jsonpage_dict['total']
+    
+    print(f'No of Episodes : {episto}')
+    n()
+    
     
     
     
@@ -483,7 +485,7 @@ else:
 
     
 # This function unlike the one above downloads (if there is stable and fast connection) anime concurrently 
-def multi_download_optimized(arg):
+def multi_download_optimized(arg: str):
     
     print("\n\nTo make efficient use of the multi download function,\nit is advised you have a very fast and stable internet connection\n")
 
@@ -522,25 +524,24 @@ def multi_download_optimized(arg):
         element = driver.find_element(
             By.XPATH, "//form[@method = 'POST']/button[contains(@class, 'button')]")
         
-        ad=driver.find_element(By.XPATH,"/html/body/div[2]/a")
-        
-
         try:
-            # the first click will click on the ad on the screen
-            
+            # the first click will click on the ad on the screeen
+            ad=driver.find_element(By.XPATH,"/html/body/div[2]/a")
             ad.click()
-            element.click()
-            n()
-            
             # the second click will download the content
-        except:
-            element.click()
-            n()
             
+            n()
+        except:
+            pass
+        n()
+        
+        #to click the download btton
+        element.click()
+
 
         # already downloading
         elem = (arg.split(','))[i]
-        print(f'Downloading Episode {elem} of {animepicked} NOW!!!!!!!')
+        print(f'Downloading Episode {elem} of {animepicked} !!')
 
             
 
