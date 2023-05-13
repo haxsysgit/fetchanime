@@ -454,17 +454,21 @@ def multi_download_verbose(arg):
         element = driver.find_element(
             By.XPATH, "//form[@method = 'POST']/button[contains(@class, 'button')]")
 
-        ad=driver.find_element(By.XPATH,"/html/body/div[2]/a")
     
         try:
             # the first click will click on the ad on the screeen
+            ad=driver.find_element(By.XPATH,"/html/body/div[2]/a")
             ad.click()
             # the second click will download the content
-            element.click()
+            
             n()
         except:
-         element.click()
+            pass
         n()
+        
+        #to click the download btton
+        element.click()
+
         #return to original window
         driver.switch_to.window(driver.window_handles[0])
         # already downloading
