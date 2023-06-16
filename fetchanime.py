@@ -44,56 +44,6 @@ n()
 n()
 
 
-# ===================================== Handling Arguments and other involved function============================================
-parser = argparse.ArgumentParser()
-
-# Adding all the required arguments
-
-parser.add_argument(
-    '-b', '--browser', help='To select the global desired browser either chrome or firefox. Also "ff" is for gui')
-
-parser.add_argument(
-    '-s', '--search',type=str, 
-    help='Specify the search keyword or Anime name e.g jujutsu kaisen.it returns a match of available anime related to the search word')
-
-parser.add_argument(
-    '-sh', '--search_hidden', help='Less Verbose search function,should be used only the anime and index is known')
-
-parser.add_argument('-i', '--index', type=int,
-                    help='Specify the index of the desired anime from the search results')
-
-
-parser.add_argument('-sd', '--single_download', type=int,
-                    help='Used to download a single episode of an anime')
-
-parser.add_argument('-md', '--multi_download_optimized', type=str,
-                    help='Used to download multiple episodes of an anime in a faster way,a string of ints separated by commas[FASTER]')
-
-parser.add_argument('-mdv', '--multi_download_verbose', type=str,
-                    help='Used to download multiple episodes of an anime and show verbose,a string of ints separated by commas[SLOWER]')
-
-parser.add_argument('-a', '--about',
-                    help='Outputs an overview information on the anime',action='store_true')
-
-
-
-
-args = parser.parse_args()
-
-print(args.__dict__)
-
-
-barg = args.browser
-sarg = args.search
-sharg = args.search_hidden
-iarg = args.index
-sdarg = args.single_download
-mdarg = args.multi_download_optimized
-mdvarg = args.multi_download_verbose
-abtarg = args.about
-autoarg = args.download_driver
-
-
 
 
 # ============================ The requests argument handler function===============================
@@ -157,10 +107,7 @@ def browsarg():
 # =======================================================================================================
 
 
-if barg != None:
-    browsarg()
-else:
-    pass
+
 
 
 def searcharg(arg):
@@ -238,19 +185,7 @@ def search_hidden(arg):
 
 
 
-if sarg != None:
-    searcharg(sarg)
-elif type(sarg) == float:
-    print("The search argument does not accept a float value")
-else:
-    pass
 
-if bool(sharg) == True:
-    search_hidden(sharg)
-elif type(sarg) == float:
-    print("The search argument does not accept a float value")
-else:
-    pass
 
 # =========================================== handling the single download utility ========================
 
@@ -294,11 +229,6 @@ def indexarg(arg):
     
     
 
-if iarg != None:
-    indexarg(iarg)
-else:
-    pass
-
 @box_text
 def aboutarg():
         #extract the anime info from a div with class anime-synopsis
@@ -307,10 +237,6 @@ def aboutarg():
         return abt[0].text.strip()
 
 
-if abtarg:
-    aboutarg()
-else:
-    pass
 
 def singledownarg(arg):
 
@@ -386,10 +312,7 @@ def singledownarg(arg):
     print(f'Downloading Episode {arg} of {animepicked} NOW!!!!!!!')
     
 
-if sdarg != None:
-    singledownarg(sdarg)
-else:
-    pass
+
 
 
 
@@ -477,10 +400,7 @@ def multi_download_verbose(arg):
         n()
 
 
-if mdvarg != None:
-    multi_download_verbose(mdvarg)
-else:
-    pass
+
 
 
 
@@ -556,11 +476,7 @@ def multi_download_optimized(arg: str):
 
     
     
-        
-if bool(mdarg) == True:
-    multi_download_optimized(mdarg)
-else:
-    pass
+
 
 # ----------------------------------------------End of All the Argument Handling----------------------------------------------------------
 
@@ -575,3 +491,104 @@ with open("speed_report.txt","a") as st:
 
 print(f'Finish time is {round(finish-start,2)}\n')
 
+if __name__ == "__main__":
+    # ===================================== Handling Arguments and other involved function============================================
+    parser = argparse.ArgumentParser()
+
+    # Adding all the required arguments
+
+    parser.add_argument(
+        '-b', '--browser', help='To select the global desired browser either chrome or firefox. Also "ff" is for gui')
+
+    parser.add_argument(
+        '-s', '--search',type=str, 
+        help='Specify the search keyword or Anime name e.g jujutsu kaisen.it returns a match of available anime related to the search word')
+
+    parser.add_argument(
+        '-sh', '--search_hidden', help='Less Verbose search function,should be used only the anime and index is known')
+
+    parser.add_argument('-i', '--index', type=int,
+                        help='Specify the index of the desired anime from the search results')
+
+
+    parser.add_argument('-sd', '--single_download', type=int,
+                        help='Used to download a single episode of an anime')
+
+    parser.add_argument('-md', '--multi_download_optimized', type=str,
+                        help='Used to download multiple episodes of an anime in a faster way,a string of ints separated by commas[FASTER]')
+
+    parser.add_argument('-mdv', '--multi_download_verbose', type=str,
+                        help='Used to download multiple episodes of an anime and show verbose,a string of ints separated by commas[SLOWER]')
+
+    parser.add_argument('-a', '--about',
+                        help='Outputs an overview information on the anime',action='store_true')
+
+
+
+
+    args = parser.parse_args()
+
+    print(args.__dict__)
+
+
+    barg = args.browser
+    sarg = args.search
+    sharg = args.search_hidden
+    iarg = args.index
+    sdarg = args.single_download
+    mdarg = args.multi_download_optimized
+    mdvarg = args.multi_download_verbose
+    abtarg = args.about
+    autoarg = args.download_driver
+
+    # Browser Argument
+    if barg != None:
+        browsarg()
+    else:
+        pass
+    
+    
+    # Search Argument
+    if sarg != None:
+        searcharg(sarg)
+    elif type(sarg) == float:
+        print("The search argument does not accept a float value")
+    else:
+        pass
+
+    if bool(sharg) == True:
+        search_hidden(sharg)
+    elif type(sarg) == float:
+        print("The search argument does not accept a float value")
+    else:
+        pass
+    
+    # Index Argument 
+    if iarg != None:
+        indexarg(iarg)
+    else:
+        pass
+    
+    #About Argument 
+    if abtarg:
+        aboutarg()
+    else:
+        pass
+    
+    # Single Download Argument
+    if sdarg != None:
+        singledownarg(sdarg)
+    else:
+        pass
+    
+    # Multi Download Arguments(mdc,mdv,mdo or md)
+    if mdvarg != None:
+        multi_download_verbose(mdvarg)
+    else:
+        pass
+    
+    # MD
+    if bool(mdarg) == True:
+        multi_download_optimized(mdarg)
+    else:
+        pass
