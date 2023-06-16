@@ -1,4 +1,7 @@
 
+- ## This project is a pre-release of [autopahe](https://github.com/haxsysgit/autopahe),please visit [autopahe](https://github.com/haxsysgit/autopahe) for the maintained version :)
+
+
 # Anime Fetch API
 
 This is a Python script that can be used to search and download anime episodes from [animepahe](https://animepahe.com/). It uses the `requests`, `beautifulsoup4`, and `selenium` libraries to interact with the website and scrape relevant data.
