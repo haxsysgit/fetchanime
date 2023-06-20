@@ -1,6 +1,5 @@
-```diff
-- ## This project is a pre-release of [autopahe](https://github.com/haxsysgit/autopahe),please visit [autopahe](https://github.com/haxsysgit/autopahe) for the maintained version :)
-```
+- ### This project is a pre-release of [autopahe](https://github.com/haxsysgit/autopahe),please visit [autopahe](https://github.com/haxsysgit/autopahe) for the maintained version :)
+
 
 # Anime Fetch API
 
